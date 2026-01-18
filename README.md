@@ -1,44 +1,36 @@
-# NCT Remove Empty Folders
+# Remove Empty Folders (Python)
 
-Một công cụ đơn giản có giao diện người dùng giúp xóa tất cả thư mục rỗng và thư mục con trong một đường dẫn được chọn.
+A small Python utility that scans a directory tree and deletes **empty subfolders** (folders that contain no files and no subfolders).
 
-## Giao diện
-![Giao diện ứng dụng](screenshot.2025-04-12.jpg)
+## What it does
 
-## 🧪 Ứng dụng
+- Walks through a target directory **bottom-up** (from deepest folders up to the root).
+- Deletes a folder if it is **empty** at the time it is checked.
+- Prints each removed folder path to the console.
 
-- Dọn dẹp các thư mục trống trong hệ thống
-- Hữu ích khi làm việc với thư mục chứa dữ liệu lớn cần tổ chức lại
+## Requirements
 
-## 🚀 Tính năng
+- Python 3.x
+- No third-party packages (uses only the standard library)
 
-- Giao diện trực quan bằng Python và Tkinter
-- Hiển thị logo thương hiệu ở giao diện đầu
-- Biểu tượng `.exe` tuỳ chỉnh theo logo
-- Có thể build thành file `.exe` dễ dàng bằng PyInstaller
+## How to run
 
-## 📁 Cấu trúc dự án
-
-```bash
-nct_remove_empty_folders/
-├── remove_empty_folders_gui.py   # Mã nguồn chính
-├── nct_logo.png                  # Logo hiển thị trong giao diện
-├── nct_icon.ico                  # Icon file dùng khi build exe
-└── README.md
-```
-
-## ⚙️ Hướng dẫn build `.exe`
-
-Yêu cầu: Python + PyInstaller đã cài
+1. Save the script as `remove_empty_folders.py`
+2. Run it from a terminal:
 
 ```bash
-pip install pyinstaller pillow
-pyinstaller --onefile --windowed --icon=nct_icon.ico --add-data "nct_logo.png;." remove_empty_folders_gui.py
+python remove_empty_folders.py
 ```
 
-File `.exe` sẽ nằm trong thư mục `dist/`.
+3. When prompted, paste or type the folder path you want to clean.
 
-## 📣 Liên hệ
+- **Windows example:** `D:\du_lieu`
+- **macOS/Linux example:** `/home/anna/data`
 
-Thuộc dự án: **PharmApp**  
-Người phát triển: **nghiencuuthuoc**
+The script checks the path and only proceeds if it is a valid directory.
+
+## Notes and safety
+
+- This tool **only removes empty folders**. It does not delete files.
+- Run it with appropriate permissions; you may need elevated privileges if the folders are protected.
+- Use carefully on important directories (e.g., system folders), since deletion is permanent.
